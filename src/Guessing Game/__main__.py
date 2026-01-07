@@ -12,13 +12,13 @@ DIGITS = max(len(str(MAX_INT)), len(str(MIN_INT)))
 def generate_random_number():
     raw = random.randint(MIN_INT, MAX_INT)
     padded_num = str(raw).zfill(DIGITS)
-    hashed_num = hashlib.sha256(str(raw).encode()).hexdigest()
+    hashed_num = hashlib.sha256(str(padded_num).encode()).hexdigest()
     return hashed_num
 
 
 def check_guess(guess, actual):
     padded_guess = str(guess).zfill(DIGITS)
-    hashed_guess = hashlib.sha256(str(guess).encode()).hexdigest()
+    hashed_guess = hashlib.sha256(str(padded_guess).encode()).hexdigest()
 
     if hashed_guess == actual:
         return True
